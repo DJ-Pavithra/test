@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Session Tracking</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+        th { background-color: #007bff; color: white; }
+        .logout-btn { margin-top: 20px; padding: 10px; background-color: red; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Active User Sessions</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Login Time</th>
+                <th>Session Duration</th>
+            </tr>
+        </thead>
+        <tbody id="sessionTableBody"></tbody>
+    </table>
+    <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
+
+    <script src="./js/session_tracking.js"></script> <!-- Ensure correct relative path -->
+    <script>
+        if (!sessionStorage.getItem("adminLoggedIn")) {
+            window.location.href = "./adminLogin.html"; // Ensure correct relative path
+        }
+
+        displaySessions();
+
+        function logoutAdmin() {
+            sessionStorage.removeItem("adminLoggedIn");
+            window.location.href = "./adminLogin.html"; // Ensure correct relative path
+        }
+    </script>
+</body>
+</html>
